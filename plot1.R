@@ -6,4 +6,5 @@ power2$dt <- strptime(paste(power2$Date,power2$Time),"%d/%m/%Y %R")         ## N
 newpower2 <- subset(power2, dt >= "2007-02-01" & dt < "2007-02-03") 
 # set some margin parameters
 par(mar=c(4,5,1,1))
-hist(newpower$Global_active_power, col="red", main = "Global Active Power", xlab="Global Active Power (kilowatts)")
+with (newpower2,
+   hist(Global_active_power, col="red", main = "Global Active Power", xlab="Global Active Power (kilowatts)"))
