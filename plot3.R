@@ -1,4 +1,4 @@
-# plot2.R
+# plot3.R
 # this file is used for all the plots
 power2 <- read.table("household_power_consumption.txt", header=TRUE, sep=";", colClasses = c("character","character","numeric","numeric","numeric","numeric","numeric","numeric","numeric"), na.strings="?")
 power2$dt <- strptime(paste(power2$Date,power2$Time),"%d/%m/%Y %R")         ## Nice column of dt from these character strings - much easier than whatever I did last time
@@ -6,11 +6,11 @@ power2$dt <- strptime(paste(power2$Date,power2$Time),"%d/%m/%Y %R")         ## N
 newpower2 <- subset(power2, dt >= "2007-02-01" & dt < "2007-02-03") 
 # 
 ## if you have loaded the objects in plot1, start here and just run lines
-png("myplot.png", width=480, height=480, units="px", pointsize = 8, type = "quartz")
+png("plot3.png", width=480, height=480, units="px", pointsize = 12, type = "quartz")
 # set some margin parameters
 par(mar=c(4,5,1,1))
 with(newpower2, {
-plot(dt,Sub_metering_1,  type="n", xlab="", ylab = "Energy sub metering", col="black", ylim= c(0,40))  # I threw in this limit because I don't like hanging spikes
+plot(dt,Sub_metering_1,  type="n", xlab="", ylab = "Energy sub metering", col="black")  
 points(dt,Sub_metering_1,  type="l", col="black" )
 points(dt,Sub_metering_2,  type="l", col="red" )
 points(dt,Sub_metering_3,  type="l", col="blue" )
